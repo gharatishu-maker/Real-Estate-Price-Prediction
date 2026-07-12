@@ -2,7 +2,14 @@ import streamlit as st
 import pandas as pd
 import pickle
 # Load Model
-model = pickle.load(open("real_estate_price_model.pkl", "rb"))
+from pathlib import Path
+import pickle
+
+MODEL_PATH = Path(__file__).parent / "real_estate_price_model.pkl"
+
+with open(MODEL_PATH, "rb") as f:
+    model = pickle.load(f)
+# model = pickle.load(open("real_estate_price_model.pkl", "rb"))
 
 # Load Dataset
 df = pd.read_csv("Bengaluru_House_Data.csv")
